@@ -1,4 +1,3 @@
-
 import jsdom from 'jsdom';
 
 if (typeof document === 'undefined') {

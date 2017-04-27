@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
-import logo from '~/assets/yay.jpg';
+// import { Button } from 'antd';
+//
+// import logo from '~/assets/yay.jpg';
 
 class App extends Component {
   render() {
     return (
       <div className="">
         <h1>这是个标题</h1>
-        <Button type="primary">Primary</Button>
         <br />
         <br />
-        <img src={logo} width="200" className="App-logo" alt="logo" />
+        {/*
+            <img src={logo} width="200" className="App-logo" alt="logo" />
+          */}
         <br />
         <br />
         <ul>
