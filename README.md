@@ -5,6 +5,8 @@ react-starter-kit
 
 > 这个脚手架工程模板用于快速启动基于 React + Webpack 为技术栈的前端项目
 
+---
+
 Features 功能特性
 -----------------
 
@@ -50,15 +52,11 @@ Features 功能特性
 快速开始
 --------
 
-1.	start --------
-
 ```
 $ git clone https://github.com/songzhengxu/react-starter-kit.git
 $ cd react-starter-kit
 $ npm install
 ```
-
-1.	dev ------
 
 #### 2.1 开发调试
 
@@ -89,6 +87,8 @@ $ npm run build
 
 导出的代码在项目根目录中
 
+---
+
 目录结构
 --------
 
@@ -111,31 +111,24 @@ react-starter-kit/
     └─Reducer
 ```
 
-#### 工作流目录结构
+---
 
-#### 技术栈
+技术栈
+------
 
 1.	[x] [Webpack](https://webpack.github.io)
-
 2.	[x] [React](https://facebook.github.io/react/)
-
 3.	[x] [ES6](http://es6.ruanyifeng.com/)
-
 4.	[x] [Redux](https://github.com/rackt/redux)
-
 5.	[x] [React-router](https://github.com/rackt/react-router-redux)
-
 6.	[x] [Babel](https://babeljs.io/)
-
 7.	[x] [Autoprefixer](https://github.com/postcss/autoprefixer)
-
 8.	[x] [PostCSS](https://github.com/postcss/postcss)
-
 9.	[x] [CSS modules](https://github.com/outpunk/postcss-modules)
-
 10.	[x] [Less](https://github.com/less/less.js)
-
 11.	[x] [Eslint](https://github.com/eslint/eslint)
+
+---
 
 待解决的问题
 ------------
