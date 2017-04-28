@@ -3,7 +3,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const opn = require('opn');
 const config = require('./webpack.config');
 
-// 相当于通过本地node服务代理请求到了http://cnodejs.org/api
+// 相当于通过本地node服务代理请求到了http://cnodejs.org/api 根据项目自行修改
 const proxy = [{
   path: '/api/*',
   target: 'https://cnodejs.org',
