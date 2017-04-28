@@ -76,8 +76,11 @@ $ 教程待写
 #### 2.3 测试用例
 
 ```
-$ npm run test //功能还没完善
+$ npm run test 				// 运行单元测试
+$ npm run coverage 		// 运行覆盖率测试
 ```
+
+> 单元测试在控制台输出报告，覆盖率测试将在项目根目录中创建coverage文件夹来输出测试报告， 进入coverage/lcov-report 中，打开index.html 能够在浏览器中查看更加详细的覆盖率测试报告
 
 #### 2.4 产出资源
 
