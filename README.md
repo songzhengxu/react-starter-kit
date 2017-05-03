@@ -23,7 +23,7 @@ Features 功能特性
 	-	指定静态资源的url路径前缀--静态资源上cdn必备
 	-	简化import路径
 	-	配置favicon
-	-	使用webpack 2自带的ES6模块处理功能(禁用了)
+	-	使用webpack 2自带的ES6模块处理功能(禁用了-可配置)
 	-	编译前清空dist目录
 
 -	开发流程
@@ -139,5 +139,4 @@ react-starter-kit/
 -	暂时没有适配mac 终端
 -	antd 与 CSS Modules 冲突，暂时无法同时使用，现在禁用了CSS Modules
 -	使用webpack 2自带的ES6模块处理功能与mocha测试配置冲突
--	测试
 -	简化import路径 mocha测试不能识别 - ---
