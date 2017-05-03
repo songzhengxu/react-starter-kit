@@ -18,7 +18,7 @@ class App extends Component {
         <br />
         <br />
         <ul>
-          <li><Link to="/">首页2</Link></li>
+          <li><Link to="/">首页</Link></li>
           <li><Link to="/list">TodoList</Link></li>
           <li><Link to="/like">like</Link></li>
           <li><Link to="/from">from</Link></li>
