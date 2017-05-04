@@ -28,9 +28,9 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          'babel-loader', 'eslint-loader',
+          'babel-loader',
         ],
-        exclude: /node_modules/,
+        exclude: /^node_modules$/,
       },
       {
         // 匹配.css文件
@@ -50,6 +50,7 @@ module.exports = {
             },
           ],
         }),
+        exclude: /^node_modules$/,
       },
       {
         // 匹配.less文件
@@ -70,6 +71,7 @@ module.exports = {
             'less-loader',
           ],
         }),
+        exclude: /^node_modules$/,
       },
       {
          // 匹配.html文件
@@ -82,6 +84,7 @@ module.exports = {
             },
           },
         ],
+        exclude: /^node_modules$/,
       },
       {
         test: /favicon\.png$/,
@@ -94,6 +97,7 @@ module.exports = {
             },
           },
         ],
+        exclude: /^node_modules$/,
       },
       {
         // 处理静态资源

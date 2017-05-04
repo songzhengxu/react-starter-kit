@@ -9,7 +9,6 @@ import Like from '../Component/Like'; // 状态 Like组件
 import TodoList from '../Component/TodoList'; // TodoList组件
 import NotFoundPage from '../Component/NotFoundPage'; // NotFoundPage
 
-import '../Style/style.less'; // 加载公共样式
 
 // 路由配置
 const RouteConfig = () => (

@@ -4,8 +4,8 @@
   "description": "基于webpack2 + ES6/7 + less + React15.5 + Redux3.6 + React-Router4.0 + react-hot-loader3 + antd 的脚手架",
   "main": "index.js",
   "scripts": {
-    "dev": "rimraf dist && node server.js",
-    "test": "mocha",
+    "dev": "rimraf dist &&set NODE_ENV=development&&node server.js",
+    "test": "set NODE_ENV=test&&mocha",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha",
     "build": "rimraf dist && webpack --progress --colors -p --config webpack.config.production.js"
   },
