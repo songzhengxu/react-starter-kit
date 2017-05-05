@@ -137,7 +137,20 @@ react-starter-kit/
 待解决的问题
 ------------
 
--	暂时没有适配mac 终端
--	antd 与 CSS Modules 冲突，暂时无法同时使用，现在禁用了CSS Modules
--	使用webpack 2自带的ES6模块处理功能与mocha测试配置冲突
+-	使用webpack 2自带的ES6模块处理功能与mocha测试配置冲突 (已解决)
+
+> 引起冲突的原因： webpack hot-module-replacement需要利用es6 import，因此我们需要在presets选项里面将es2015的modules选项设置为false,默认为commonjs 但是mocha测试(在Node运行环境下)的时候需要想import 转为为commonjs风格的require 解决方法： 利用babel在不同环境变量的情况下读取不同options的特性 测试的时候，将临时环境变量设置为test, 在babelrc文件里面的env选项下，配置好环境变量为test的时候需要使用的presets和plugins 开发的时候，将临时环境变量设置为development, 在没有配置的情况狂下，babelrc默认的环境变狼为development
+
+-	带有路由的组件，在mocha测试时，不能渲染到dom (已解决)
+
+> 组件带有路由的情况下需要将组件包裹在 <MemoryRouter>里面，直接放到测试中运行。 而不是用<MemoryRouter>生成新的组件后再放到测试中运行。具体查看测试用例
+
+-	redux组件在mocha测试时，不能渲到dom (已解决)
+
+> 可以通过自己创建一个store,创建store的时候，即使只有一个reducer也要用combineReducers包裹好再创建。 创建好store后，利用<Provider>生成一个组件，放到测试中即可。
+
+-	jsdom8.0.1升级到jsdom10.1.0 (已解决)
+
+> jsdom10.1.0相对于8.0.1来说，更改了部分api，根据官网api，修改setup.js即可。 setup.js： https://github.com/lelandrichardson/enzyme-example-mocha/blob/master/test/.setup.js jsdom 10.1.0： https://github.com/tmpvar/jsdom
+
 -	简化import路径 mocha测试不能识别 - ---
