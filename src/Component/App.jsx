@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { Button } from 'antd';
-//
-// import logo from '~/assets/yay.jpg';
+import { Button } from 'antd';
+
+import logo from '~/assets/yay.jpg';
 
 class App extends Component {
   render() {
     return (
       <div className="">
         <h1>这是个标题</h1>
-        <i className="icon-shuaxin icon" />
+        <Button>xxxx</Button>
         <br />
         <br />
         {/*

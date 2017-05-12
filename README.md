@@ -153,4 +153,22 @@ react-starter-kit/
 
 > jsdom10.1.0相对于8.0.1来说，更改了部分api，根据官网api，修改setup.js即可。 setup.js： https://github.com/lelandrichardson/enzyme-example-mocha/blob/master/test/.setup.js jsdom 10.1.0： https://github.com/tmpvar/jsdom
 
+-	当引入less时，mocha测试报错,
+
+> 由于antd的模块配置是使用less按需加载，所以是动态引入less文件，以及我们自己引入的less文件，组件都不能通过测试，我们需要配置mocha 忽略less 文件
+
+Install it:
+
+```js
+npm install --save-dev ignore-styles
+```
+
+Run tests without styles:
+
+```js
+mocha --require ignore-styles
+```
+
 -	简化import路径 mocha测试不能识别 - ---
+
+> 使用 babel-plugin-module-resolver 解决

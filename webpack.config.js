@@ -7,7 +7,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-  devtool: 'inline-source-map',
+  cache: true,
+  devtool: 'eval',
   entry: {
     index: [
       'react-hot-loader/patch',
@@ -42,7 +43,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          'babel-loader',
+          'babel-loader?cacheDirectory',
         ],
         exclude: /^node_modules$/,
       },

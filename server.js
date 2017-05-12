@@ -1,23 +1,14 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const opn = require('opn');
 const config = require('./webpack.config');
-
-// 相当于通过本地node服务代理请求到了http://cnodejs.org/api 根据项目自行修改
-const proxy = [{
-  path: '/api/*',
-  target: 'https://cnodejs.org',
-  host: 'cnodejs.org',
-}];
+const proxy = require('http-proxy-middleware');
 
 // 启动服务
 const server = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   contentBase: config.output.path,
-  proxy,
   // 开启服务器的模块热替换(HMR)
   hot: true,
-  inline: true,
   // 当请求不存在的路由时，直接返回首页
   historyApiFallback: {
     index: '/assets/',
@@ -28,11 +19,15 @@ const server = new WebpackDevServer(webpack(config), {
   },
 });
 
+// 你只需要执行这一段代码，当你访问需要跨域的api资源时，就可以成功访问到了。
+server.app.use('/api/*', proxy({
+  target: 'http://rap.fanweimei.com/mockjsdata/3',
+  changeOrigin: true,
+}));
+
 // 将其他路由，全部返回index.html
 server.app.get('*', (req, res) => {
   res.sendFile(`${__dirname}/index.html`);
 });
 
 server.listen(3000);
-// 自动打开浏览器
-opn('http://localhost:3000');
