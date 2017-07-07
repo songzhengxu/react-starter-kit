@@ -1,13 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class NotFoundPage extends Component {
-  render() {
-    return (
-      <div className="App">
+function NotFoundPage() {
+  return (
+    <div className="App">
         404 页面
       </div>
-    );
-  }
+  );
 }
-
 export default NotFoundPage;

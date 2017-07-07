@@ -8,14 +8,8 @@
         "react"
     ],
     "rules": {
-      "no-alert": 0,
-      "no-underscore-dangle": 0,
-      "react/prefer-stateless-function": 0,
-      "react/no-multi-comp": 0,
-      "import/no-extraneous-dependencies": 0,
-      'jsx-a11y/no-static-element-interactions': 0,
       "import/no-unresolved": 0,
-      "react/no-array-index-key": 0,
-      "react/prop-types": 0
+        "react/forbid-prop-types": 0,
+        "jsx-a11y/no-static-element-interactions": 0
     }
 }
