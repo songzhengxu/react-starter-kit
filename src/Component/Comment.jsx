@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Style/style.less';
+import PropTypes from 'prop-types';
 
 const data222 = [
   { author: 'Pete Hunt', text: 'This is one comment' },
@@ -7,31 +7,33 @@ const data222 = [
 ];
 
 
-class Comment extends Component {
-  render() {
-    return (
-      <div className="comment">
-        <h2>{this.props.author}</h2>
-        <p>{this.props.children}</p>
-      </div>
-    );
-  }
+function Comment(props) {
+  return (
+    <div className="comment">
+      <h2>{props.author}</h2>
+      <p>{props.text}</p>
+    </div>
+  );
 }
+Comment.propTypes = {
+  author: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
-class CommentList extends Component {
-  render() {
-    const commentNodes = this.props.data.map((comment, index) => (
-      <Comment key={index} author={comment.author}> {comment.text} </Comment>
+
+function CommentList(props) {
+  const commentNodes = props.data.map((comment, index) => (
+    <Comment key={index} author={comment.author} text={comment.text} />
       ));
-    return (
-      <div className="commentList">
-        {commentNodes}
-      </div>
-    );
-  }
-
+  return (
+    <div className="commentList">
+      {commentNodes}
+    </div>
+  );
 }
-
+CommentList.propTypes = {
+  data: PropTypes.array.isRequired,
+};
 
 class CommentFrom extends Component {
   constructor(props) {
@@ -63,6 +65,10 @@ class CommentFrom extends Component {
   }
 }
 
+CommentFrom.propTypes = {
+  onCommentSubmit: PropTypes.func.isRequired,
+};
+
 
 class CommentBox extends Component {
   constructor(props) {
@@ -91,6 +97,5 @@ class CommentBox extends Component {
     );
   }
 }
-
 
 export default CommentBox;

@@ -16,8 +16,13 @@ import App from './Config/Route'; // 路由配置
 import store from './Config/Store'; // 引入Store
 
 // 导入 i18n 配置文件
-import zhCN from './locale/zh';
-import enUS from './locale/en';
+
+/* eslint-disable */
+import zhCN from './Locale/zh';
+import enUS from './Locale/en';
+/* eslint-disable */
+
+import './Style/style.less';
 
 // 国际化
 addLocaleData([...en, ...zh]);

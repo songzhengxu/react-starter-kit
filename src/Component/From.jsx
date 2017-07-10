@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../Style/style.less';
 
 class From extends Component {
   constructor(props) {

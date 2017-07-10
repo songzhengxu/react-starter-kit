@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { Button, Pagination } from 'antd';
 import { FormattedMessage } from 'react-intl';
 
+/* eslint-disable */
 import logo from '~/assets/yay.jpg';
+/* eslint-disable */
+
 
 // class App extends Component {
 function App() {
@@ -38,7 +41,7 @@ function App() {
         id="intl.name"
         values={{ name: <b>{name}</b> }}
       />
-    </div>
+  </div>
   );
 }
 

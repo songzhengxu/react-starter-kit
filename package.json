@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "antd": "^2.11.2",
+    "bundle-loader": "^0.5.5",
     "intl": "^1.2.5",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",

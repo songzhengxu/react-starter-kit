@@ -25,7 +25,7 @@ module.exports = {
       './index.jsx',
       // 我们 app 的入口文件
     ],
-    vendor: ['react', 'react-dom', 'react-redux', 'react-router-dom', 'redux', 'redux-thunk'],
+    vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].js',
@@ -35,6 +35,7 @@ module.exports = {
     // 项目输出路径
     publicPath: '/assets/',
     // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
+    chunkFilename: '[name].[chunkhash].js',
   },
 
   context: `${__dirname}/src`,
@@ -43,7 +44,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         use: [
-          'babel-loader?cacheDirectory',
+          'babel-loader?cacheDirectory', 'eslint-loader',
         ],
         exclude: /^node_modules$/,
       },
@@ -107,7 +108,7 @@ module.exports = {
 
   },
   resolve: {
-    extensions: ['.js', '.less', '.json', '.jsx'],
+    extensions: ['.js', '.less', '.jsx', '.json'],
     alias: {
       '~': `${__dirname}/src`,
     },
