@@ -10,6 +10,12 @@ react-starter-kit
 更新日志
 --------
 
+20170719
+--------
+
+-	1.移除react-intl国际化需求
+-	2.严格按照Angular 规范书写Commit message
+
 20170710
 --------
 
