@@ -13,7 +13,6 @@ import loadFrom from 'bundle-loader?lazy!../Component/From'; // 表单组件
 import loadComment from 'bundle-loader?lazy!../Component/Comment'; // 评论组件
 import loadLike from 'bundle-loader?lazy!../Containers/LikeContainer'; // 状态 Like组件
 import loadTodoList from 'bundle-loader?lazy!../Containers/TodoListContainer'; // TodoList组件
-import loadIntl from 'bundle-loader?lazy!../Component/Intl';
 // components load their module for initial visit
 // //这里只是给this.props.child传一个方法，最后在Bundle的render里面调用
 const From = props => (
@@ -37,11 +36,7 @@ const TodoList = props => (
     {TodoList => <TodoList {...props} />}
   </Bundle>
 );
-const Intl = props => (
-  <Bundle load={loadIntl}>
-    {Intl => <Intl {...props} />}
-  </Bundle>
-);
+
 
 
 // 路由配置
@@ -53,7 +48,6 @@ const RouteConfig = () => (
         <Route path="/from" component={From} />
         <Route path="/comment" component={Comment} />
         <Route path="/like" component={Like} />
-        <Route path="/intl" component={Intl} />
         <Route path="/list" component={TodoList} />
         <Route component={NotFoundPage} />
       </Switch>

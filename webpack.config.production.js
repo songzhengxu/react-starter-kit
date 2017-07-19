@@ -10,7 +10,7 @@ module.exports = {
     index: [
       './index.jsx',
     ],
-    vendor: ['react'],
+    vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].[chunkhash].js',
@@ -128,6 +128,15 @@ module.exports = {
     new webpack.DefinePlugin({ // 编译成生产版本
       'process.env': {
         NODE_ENV: JSON.stringify('production'),
+      },
+    }),
+    // 压缩时去掉js所有注释，包括copyright信息。
+    new webpack.optimize.UglifyJsPlugin({
+      output: {
+        comments: false,  // remove all comments
+      },
+      compress: {
+        warnings: false,
       },
     }),
     // 自动生成所需要的html模板

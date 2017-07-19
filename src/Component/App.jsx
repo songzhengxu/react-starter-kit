@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Pagination } from 'antd';
-import { FormattedMessage } from 'react-intl';
 
 /* eslint-disable */
-import logo from '~/assets/yay.jpg';
+// import logo from '~/assets/yay.jpg';
 /* eslint-disable */
 
 
@@ -17,7 +16,7 @@ function App() {
       <Button>button</Button>
       <br />
       <br />
-      <img src={logo} width="200" className="App-logo" alt="logo" />
+      {/*<img src={logo} width="200" className="App-logo" alt="logo" />*/}
       <br />
       <br />
       <ul>
@@ -32,15 +31,7 @@ function App() {
       <Pagination defaultCurrent={1} total={50} showSizeChanger />
       <br />
       <br />
-      <FormattedMessage
-        id="intl.hello"
-        defaultMessage={'hello'}
-      />
-      <br />
-      <FormattedMessage
-        id="intl.name"
-        values={{ name: <b>{name}</b> }}
-      />
+
   </div>
   );
 }
