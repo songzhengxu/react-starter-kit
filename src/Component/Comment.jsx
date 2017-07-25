@@ -1,3 +1,6 @@
+/* eslint-disable */
+// 语法验证忽略当前文件，这文件故意留了两个语法错误，开发中请删除这三行
+// 语法验证报错，会导致打包失败和热更新失败，所以我打包时先注释掉
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
