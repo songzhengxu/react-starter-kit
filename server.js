@@ -9,6 +9,8 @@ const server = new WebpackDevServer(webpack(config), {
   contentBase: config.output.path,
   // 开启服务器的模块热替换(HMR)
   hot: true,
+  host: '0.0.0.0',
+  disableHostCheck: true,
   // 当请求不存在的路由时，直接返回首页
   historyApiFallback: {
     index: '/assets/',

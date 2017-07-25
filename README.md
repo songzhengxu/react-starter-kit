@@ -15,6 +15,7 @@ react-starter-kit
 
 -	1.使用cross-env来设置跨平台设置环境变量
 -	2.统一window,mac的开发运行命令
+-	3.配置允许局域网访问 http://ip:port
 
 20170719
 --------
