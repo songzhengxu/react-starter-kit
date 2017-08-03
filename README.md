@@ -10,6 +10,15 @@ react-starter-kit
 更新日志
 --------
 
+20170803
+--------
+
+-	1.加入babel-polyfill
+-	2.修复cross-env 未生效的bug
+-	3.加入stage-2支持，用es2017的语法解决react bind this的问题，
+
+> 详细见 src\Component\From.jsx 中的代码，直接用stage-2的写法，事件不用再绑定this;
+
 20170725
 --------
 

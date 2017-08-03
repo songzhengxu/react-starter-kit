@@ -1,11 +1,10 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+console.log(process.env.NODE_ENV);
 // 一句话理解 path和 publicPath的作用！！！！
 // path 用来存放打包后文件的输出目录
 // publicPath 用来定义静态资源的引用地址
-
-
 module.exports = {
   cache: true,
   devtool: 'eval',

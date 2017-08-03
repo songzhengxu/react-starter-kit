@@ -1,4 +1,4 @@
-
+console.log(process.env.NODE_ENV);
 // 从jsdom 8.0.1升级到10.1.0
 // jsdom 10.1.0修改了部分api
 
@@ -7,7 +7,6 @@
 // 获取JSDOM方法，用于生成JSDOM对象
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-
 const exposedProperties = ['window', 'navigator', 'document'];
 
 // 生成JSDOM对象

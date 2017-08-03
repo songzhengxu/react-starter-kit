@@ -36,11 +36,7 @@ CommentList.propTypes = {
 };
 
 class CommentFrom extends Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  handleSubmit(e) {
+  handleSubmit =(e) => {
     e.preventDefault();
     const author = this.author.value;
     const text = this.text.value;
