@@ -10,6 +10,11 @@ react-starter-kit
 更新日志
 --------
 
+20170814
+--------
+
+-	1.引入CSS Modules 且分离antd的less不走CSS Modules编译
+
 20170803
 --------
 

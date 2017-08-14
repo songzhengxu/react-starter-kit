@@ -10,8 +10,6 @@ import { AppContainer } from 'react-hot-loader';
 import App from './Config/Route'; // 路由配置
 import store from './Config/Store'; // 引入Store
 
-import './Style/style.less';
-
 // 订阅state改变
 store.subscribe(() => {
     // console.log(store.getState());

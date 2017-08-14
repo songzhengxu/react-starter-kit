@@ -72,7 +72,28 @@ module.exports = {
             'less-loader',
           ],
         }),
-        exclude: /^node_modules$/,
+        include: /node_modules/,
+      },
+      {
+        // 匹配.less文件
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
+            {
+              loader: 'postcss-loader',
+              options: {
+                plugins() {
+                  return [
+                    autoprefixer,
+                  ];
+                },
+              },
+            },
+            'less-loader',
+          ],
+        }),
+        exclude: /node_modules/,
       },
       {
          // 匹配.html文件
@@ -116,7 +137,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.less', '.jsx', '.json'],
+    extensions: ['.jsx', '.js', '.less', '.json'],
     alias: {
       '~': `${__dirname}/src`,
     },

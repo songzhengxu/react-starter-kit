@@ -62,7 +62,16 @@ module.exports = {
           'css-loader',
           'less-loader',
         ],
-        exclude: /^node_modules$/,
+        include: /node_modules/,
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
+          'less-loader',
+        ],
+        exclude: /node_modules/,
       },
       {
          // 匹配.html文件
@@ -107,7 +116,7 @@ module.exports = {
 
   },
   resolve: {
-    extensions: ['.js', '.less', '.jsx', '.json'],
+    extensions: ['.jsx', '.js', '.less', '.json'],
     alias: {
       '~': `${__dirname}/src`,
     },
