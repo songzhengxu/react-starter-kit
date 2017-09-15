@@ -121,6 +121,16 @@ module.exports = {
       '~': `${__dirname}/src`,
     },
   },
+  externals: {
+    axios: 'axios',
+    react: 'React',
+    redux: 'Redux',
+    'react-dom': 'ReactDOM',
+    'react-redux': 'ReactRedux',
+    'react-router-dom': 'ReactRouterDOM',
+    'prop-types': 'PropTypes',
+    'babel-polyfill': 'window',
+  },
   plugins: [
     // 将第三方库单独打包
     new webpack.optimize.CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),

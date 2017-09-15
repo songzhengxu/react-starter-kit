@@ -49,17 +49,9 @@
     "webpack-dev-server": "^2.5.0"
   },
   "dependencies": {
-    "antd": "^2.11.2",
-    "babel-polyfill": "^6.23.0",
+    "antd": "^2.13.1",
     "bundle-loader": "^0.5.5",
-    "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
     "react-hot-loader": "^3.0.0-beta.6",
-    "react-redux": "^5.0.4",
-    "react-router": "^4.1.1",
-    "react-router-dom": "^4.1.1",
-    "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },
   "repository": {

@@ -5,7 +5,7 @@ import { Button, Pagination, Cascader } from 'antd';
 import style from './index.less';
 
 /* eslint-disable */
-// import logo from '~/assets/yay.jpg';
+import logo from '~/assets/yay.jpg';
 /* eslint-disable */
 
 const options = [{
@@ -44,9 +44,9 @@ function App() {
       <h1>this is a title</h1>
       <Button>button</Button>
       <br />
-      <Cascader options={options}  disabled onChange={onChange} placeholder="Please select" />
+      <Cascader options={options}   onChange={onChange} placeholder="Please select" />
       <br />
-      {/*<img src={logo} width="200" className="App-logo" alt="logo" />*/}
+      <img src={logo} width="200" className="App-logo" alt="logo" />
       <br />
       <br />
       <ul>
