@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 function Main(props) {
   const { TodoList, handleAdd, handleRemove } = props;
   const items = TodoList.items.map((item, i) => (
-    <div key={item} onClick={() => handleRemove(i)} >
+    <div key={item} onClick={() => handleRemove(i)}>
       {item}
     </div>
   ));
   return (
     <div className="App">
-      <button onClick={handleAdd}>Add Item</button>
+      <button type="button" onClick={handleAdd}>
+        Add Item
+      </button>
       {items}
     </div>
   );

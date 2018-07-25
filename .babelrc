@@ -1,12 +1,12 @@
 {
   "presets": [
-    ["es2015", {"modules": false}],
+    ["env", {"modules": false}],
     "stage-2",
     "react"
   ],
   "plugins": [
     "react-hot-loader/babel",
-    ["import", [{ "libraryName": "antd", "style": true }]],
+    ["import", { "libraryName": "antd", "style": true }]
   ],
   "env": {
         "development": {
@@ -16,15 +16,14 @@
         },
         "test": {
           "presets": [
-            "es2015",
-            "es2017",
+            "env",
             "stage-2",
             "react"
           ],
           "plugins": [
             ["module-resolver", {
               "alias": {
-                  "~": ["./src"],
+                  "~": ["./src"]
               }
             }]
           ]

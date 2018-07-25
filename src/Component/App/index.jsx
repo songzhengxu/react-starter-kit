@@ -17,8 +17,10 @@ const options = [{
     children: [{
       value: 'xihu',
       label: 'West Lake',
-    }],
-  }],
+    },
+  ],
+  },
+],
 }, {
   value: 'jiangsu',
   label: 'Jiangsu',
@@ -28,9 +30,12 @@ const options = [{
     children: [{
       value: 'zhonghuamen',
       label: 'Zhong Hua Men',
-    }],
-  }],
-}];
+    },
+  ],
+  },
+],
+},
+];
 
 function onChange(value) {
   console.log(value);
@@ -61,7 +66,6 @@ function App() {
       <Pagination defaultCurrent={1}  total={50} showSizeChanger />
       <br />
       <br />
-
   </div>
   );
 }

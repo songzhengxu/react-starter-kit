@@ -4,18 +4,18 @@ import ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-
 import TodoListWithContainer from '../../src/Component/TodoList';
 import Reducer from '../../src/Reducer/Index';
 
-const TodoList = Reducer.TodoList;
+const { TodoList } = Reducer;
 
 // 创建一个测试用的时候的store必须在创建的时候必须用combineReducers包裹一层，否则默认的state无法引导到测试组件的props。
 const store = createStore(combineReducers({ TodoList }));
-const provider = (<Provider store={store}>
-  <TodoListWithContainer />
-</Provider>);
+const provider = (
+  <Provider store={store}>
+    <TodoListWithContainer />
+  </Provider>
+);
 
 // 这个测试用的是react官方的测试组件
 describe('render into document with store and use react test util', () => {

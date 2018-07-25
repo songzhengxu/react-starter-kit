@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { LikeAction } from '../Action/Index';
 import Like from '../Component/Like';
 
-
 function Main(props) {
   return <Like {...props} />;
 }

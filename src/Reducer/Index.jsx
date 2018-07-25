@@ -7,6 +7,7 @@ const TodoList = (state = { items: ['hello', 'world', 'click', 'me'] }, action) 
   let Newstate = null;
   switch (action.type) {
     case 'Add': // 添加
+      // eslint-disable-next-line
       Newstate = state.items.concat([prompt('Enter some text')]);
       return { items: Newstate };
     case 'Remove': // 删除

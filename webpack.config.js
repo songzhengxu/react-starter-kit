@@ -1,38 +1,42 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-console.log(process.env.NODE_ENV);
 // 一句话理解 path和 publicPath的作用！！！！
 // path 用来存放打包后文件的输出目录
 // publicPath 用来定义静态资源的引用地址
 module.exports = {
   cache: true,
-  devtool: 'eval',
+  mode: 'development', // 会将 process.env.NODE_ENV 的值设为 development。
+  // 启用 NamedChunksPlugin(） 和  NamedModulesPlugin()
   entry: {
     index: [
-      'react-hot-loader/patch',
-      // 开启 React 代码的模块热替换(HMR)
 
-      'webpack-dev-server/client?http://localhost:3000',
+      // 开启 React 代码的模块热替换(HMR)
+      'react-hot-loader/patch',
+
       // 为 webpack-dev-server 的环境打包代码
       // 然后连接到指定服务器域名与端口
+      'webpack-dev-server/client?http://localhost:3000',
 
-      'webpack/hot/only-dev-server',
       // 为热替换(HMR)打包好代码
       // only- 意味着只有成功更新运行代码才会执行热替换(HMR)
+      'webpack/hot/only-dev-server',
 
-      './index.jsx',
       // 我们 app 的入口文件
+      './index.jsx',
+
     ],
     vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].js',
-    // 输出的打包文件
 
+    // 输出的打包文件
     path: `${__dirname}/dist/assets/`,
+
     // 项目输出路径
     publicPath: '/assets/',
+
     // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
     chunkFilename: '[name].[chunkhash].js',
   },
@@ -45,7 +49,7 @@ module.exports = {
         use: [
           'babel-loader?cacheDirectory', 'eslint-loader',
         ],
-        exclude: /^node_modules$/,
+        exclude: /node_modules/,
       },
       {
         test: /\.css$/,
@@ -60,7 +64,7 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader',
-          'less-loader',
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
         ],
         include: /node_modules/,
       },
@@ -69,12 +73,12 @@ module.exports = {
         use: [
           'style-loader',
           'css-loader?modules&localIdentName=[path][name]---[local]---[hash:base64:5]',
-          'less-loader',
+          { loader: 'less-loader', options: { javascriptEnabled: true } },
         ],
         exclude: /node_modules/,
       },
       {
-         // 匹配.html文件
+        // 匹配.html文件
         test: /\.html$/,
         use: [
           {
@@ -90,7 +94,7 @@ module.exports = {
         test: /favicon\.png$/,
         use: [
           {
-           // 使用file-loader
+            // 使用file-loader
             loader: 'file-loader',
             options: {
               name: '[name].[ext]?[hash]',
@@ -123,26 +127,22 @@ module.exports = {
   },
   externals: {
     axios: 'axios',
-    react: 'React',
-    redux: 'Redux',
-    'react-dom': 'ReactDOM',
-    'react-redux': 'ReactRedux',
-    'react-router-dom': 'ReactRouterDOM',
     'prop-types': 'PropTypes',
     'babel-polyfill': 'window',
   },
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
   plugins: [
-    // 将第三方库单独打包
-    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),
-    new webpack.HotModuleReplacementPlugin(),
-      // 开启全局的模块热替换(HMR)
-    new webpack.NamedModulesPlugin(),
-    // 当模块热替换(HMR)时在浏览器控制台输出对用户更友好的模块名字信息
 
+  // 开启全局的模块热替换(HMR)
+    new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
       template: './Template/index.html',
       filename: './index.html', // 生成的html存放路径，相对于 path
     }),
-    // 生成html文件
   ],
 };

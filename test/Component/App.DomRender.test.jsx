@@ -22,10 +22,12 @@ const RouteConfig = () => (
 describe('render int dom without wrapper', () => {
   it('there should be only one h1 tag', () => {
     const wrapper = TestUtils.renderIntoDocument(
-      <MemoryRouter ><Route path="/" component={App} /></MemoryRouter>,
-        // returns null, you shouldn't write like below.
+      <MemoryRouter>
+        <Route path="/" component={App} />
+      </MemoryRouter>,
+      // returns null, you shouldn't write like below.
       // <RouteConfig />,
-      );
+    );
     const head = TestUtils.scryRenderedDOMComponentsWithTag(wrapper, 'h1');
     expect(head.length).to.equal(1);
   });
@@ -38,14 +40,14 @@ describe('render into dom with a div wrapper', () => {
       // you need a Router wrap the division to make it as a react elment
       <Router>
         <div className="app">
-          <MemoryRouter initialEntries={['/']} initialIndex={0} >
+          <MemoryRouter initialEntries={['/']} initialIndex={0}>
             <Route path="/" component={App} />
           </MemoryRouter>
         </div>
       </Router>,
-        // return null shouldn't write like below.
+      // return null shouldn't write like below.
       // <RouteConfig />,
-      );
+    );
     const app = TestUtils.findRenderedDOMComponentWithClass(wrapper, 'app');
     expect(app.className).to.equal('app');
   });
@@ -65,7 +67,7 @@ describe('render WithoutRouter', () => {
     // document, but you shouldn't write <MemoryRouter> in a component
     const wrapper = TestUtils.renderIntoDocument(
       <WithoutRouter />,
-      );
+    );
     expect(wrapper).to.equal(null);
   });
 });

@@ -4,7 +4,8 @@ function NotFoundPage() {
   return (
     <div className="App">
         404 页面
-      </div>
+    </div>
   );
 }
+
 export default NotFoundPage;

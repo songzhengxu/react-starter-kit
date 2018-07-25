@@ -9,12 +9,14 @@ class Bundle extends Component {
       mod: null,
     };
   }
+
   componentWillMount() {
     this.load(this.props);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.load !== this.props.load) {
+    const { load } = this.props;
+    if (nextProps.load !== load) {
       this.load(nextProps);
     }
   }
@@ -32,7 +34,9 @@ class Bundle extends Component {
   }
 
   render() {
-    return this.state.mod ? this.props.children(this.state.mod) : null;
+    const { mod } = this.state;
+    const { children } = this.props;
+    return mod ? children(mod) : null;
   }
 }
 
@@ -40,6 +44,5 @@ Bundle.propTypes = {
   load: PropTypes.func.isRequired,
   children: PropTypes.func.isRequired,
 };
-
 
 export default Bundle;

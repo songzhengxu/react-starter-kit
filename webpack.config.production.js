@@ -1,28 +1,31 @@
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin'); // 单独打包css
-const autoprefixer = require('autoprefixer'); // 自动加前缀的插件
 
+// 单独打包css 目前还没有webpack4版本 需安装 extract-text-webpack-plugin@next解决
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer'); // 自动加前缀的插件
 
 module.exports = {
   devtool: false,
+  mode: 'production', // 会将 process.env.NODE_ENV 的值设为 production。
+  // 启用 FlagDependencyUsagePlugin, FlagIncludedChunksPlugin, ModuleConcatenationPlugin,
+  // NoEmitOnErrorsPlugin, OccurrenceOrderPlugin, SideEffectsFlagPlugin 和 UglifyJsPlugin.
   entry: {
     index: [
       './index.jsx',
     ],
-    vendor: ['react', 'react-dom'],
   },
   output: {
     filename: '[name].[chunkhash].js',
 
     // 输出的打包文件
     path: `${__dirname}/dist/assets/`,
+
     // 项目输出路径
     publicPath: '/assets/',
+
     // 对于热替换(HMR)是必须的，让 webpack 知道在哪里载入热更新的模块(chunk)
     chunkFilename: '[name].[chunkhash].js',
   },
-
   context: `${__dirname}/src`,
   module: {
     rules: [
@@ -31,7 +34,7 @@ module.exports = {
         use: [
           'babel-loader',
         ],
-        exclude: /^node_modules$/,
+        exclude: /node_modules/,
       },
       {
         // 匹配.css文件
@@ -69,7 +72,7 @@ module.exports = {
                 },
               },
             },
-            'less-loader',
+            { loader: 'less-loader', options: { javascriptEnabled: true } },
           ],
         }),
         include: /node_modules/,
@@ -90,13 +93,13 @@ module.exports = {
                 },
               },
             },
-            'less-loader',
+            { loader: 'less-loader', options: { javascriptEnabled: true } },
           ],
         }),
         exclude: /node_modules/,
       },
       {
-         // 匹配.html文件
+        // 匹配.html文件
         test: /\.html$/,
         use: [
           {
@@ -112,7 +115,7 @@ module.exports = {
         test: /favicon\.png$/,
         use: [
           {
-           // 使用file-loader
+            // 使用file-loader
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
@@ -144,32 +147,19 @@ module.exports = {
   },
   externals: {
     axios: 'axios',
-    react: 'React',
-    redux: 'Redux',
-    'react-dom': 'ReactDOM',
-    'react-redux': 'ReactRedux',
-    'react-router-dom': 'ReactRouterDOM',
     'prop-types': 'PropTypes',
     'babel-polyfill': 'window',
   },
+  optimization: {
+    runtimeChunk: true,
+    splitChunks: {
+      chunks: 'all', // 进行模块拆分 提取公共代码 相当于webpack2 的 CommonsChunkPlugin
+    },
+
+    // minimizer: true, // 美化代码 相当于webpack2 的 UglifyJsPlugin mode 为 production 自动 true
+  },
   plugins: [
-    // 将第三方库单独打包
-    new webpack.optimize.CommonsChunkPlugin({ names: ['vendor', 'manifest'] }),
-    // 添加系统全局变量
-    new webpack.DefinePlugin({ // 编译成生产版本
-      'process.env': {
-        NODE_ENV: JSON.stringify('production'),
-      },
-    }),
-    // 压缩时去掉js所有注释，包括copyright信息。
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false,  // remove all comments
-      },
-      compress: {
-        warnings: false,
-      },
-    }),
+
     // 自动生成所需要的html模板
     new HtmlWebpackPlugin({
       template: './Template/index.html',

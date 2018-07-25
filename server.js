@@ -1,19 +1,17 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
 const proxy = require('http-proxy-middleware');
+const config = require('./webpack.config');
 
 // 启动服务
 const server = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   contentBase: config.output.path,
-  // 开启服务器的模块热替换(HMR)
-  hot: true,
+  hot: true, // 开启服务器的模块热替换(HMR)
   host: '0.0.0.0',
   disableHostCheck: true,
-  // 当请求不存在的路由时，直接返回首页
   historyApiFallback: {
-    index: '/assets/',
+    index: '/assets/', // 当请求不存在的路由时，直接返回首页
     disableDotRule: true,
   },
   stats: {

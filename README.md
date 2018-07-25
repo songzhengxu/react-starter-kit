@@ -1,7 +1,7 @@
 react-starter-kit
 =================
 
-基于webpack2 + ES6/7 + less + React15.5 + Redux3.6 + React-Router4.0 + react-hot-loader3 + antd
+基于webpack4 + ES6/7 + less + React16 + Redux4 + React-Router4 + react-hot-loader4 + antd
 
 > 这个脚手架工程模板用于快速启动基于 React + Webpack 为技术栈的前端项目
 
@@ -9,6 +9,17 @@ react-starter-kit
 
 更新日志
 --------
+
+20180725
+--------
+
+-	升级所有依赖到最新版 具体查看package.json
+-	主要升级webpack4
+-	升级react16
+-	升级antd到3.7
+-	修复了生产环境还会显示redux tools的bug
+
+> 时隔一年，再次更新，在这一年中，我自己一直用dva全家桶 不管是rn还是wxapp 都是用的dva全家桶，那为什么还更新这个项目呢？ 最主要还是为了学习webpack的配置， 想当初这个项目也是耗时2个月硬啃英文文档；现在使用任何脚手架都能基于webpack扩展自己想要的功能，也一眼能看懂别人配置的规则是想干嘛；所以还是跟上升级的步伐，学不动也要学呀，与其说这是一个好的脚手架，倒不如说这是一个学习webpack最好的案例， 对了，现在本脚手架打包只需要3s左右，上一个版本还需要17s呢
 
 20170915
 --------
@@ -186,44 +197,3 @@ react-starter-kit/
 9.	[x] [CSS modules](https://github.com/outpunk/postcss-modules)
 10.	[x] [Less](https://github.com/less/less.js)
 11.	[x] [Eslint](https://github.com/eslint/eslint)
-
----
-
-待解决的问题
-------------
-
--	使用webpack 2自带的ES6模块处理功能与mocha测试配置冲突 (已解决)
-
-> 引起冲突的原因： webpack hot-module-replacement需要利用es6 import，因此我们需要在presets选项里面将es2015的modules选项设置为false,默认为commonjs 但是mocha测试(在Node运行环境下)的时候需要想import 转为为commonjs风格的require 解决方法： 利用babel在不同环境变量的情况下读取不同options的特性 测试的时候，将临时环境变量设置为test, 在babelrc文件里面的env选项下，配置好环境变量为test的时候需要使用的presets和plugins 开发的时候，将临时环境变量设置为development, 在没有配置的情况狂下，babelrc默认的环境变狼为development
-
--	带有路由的组件，在mocha测试时，不能渲染到dom (已解决)
-
-> 组件带有路由的情况下需要将组件包裹在 <MemoryRouter>里面，直接放到测试中运行。 而不是用<MemoryRouter>生成新的组件后再放到测试中运行。具体查看测试用例
-
--	redux组件在mocha测试时，不能渲到dom (已解决)
-
-> 可以通过自己创建一个store,创建store的时候，即使只有一个reducer也要用combineReducers包裹好再创建。 创建好store后，利用<Provider>生成一个组件，放到测试中即可。
-
--	jsdom8.0.1升级到jsdom10.1.0 (已解决)
-
-> jsdom10.1.0相对于8.0.1来说，更改了部分api，根据官网api，修改setup.js即可。 setup.js： https://github.com/lelandrichardson/enzyme-example-mocha/blob/master/test/.setup.js jsdom 10.1.0： https://github.com/tmpvar/jsdom
-
--	当引入less时，mocha测试报错,
-
-> 由于antd的模块配置是使用less按需加载，所以是动态引入less文件，以及我们自己引入的less文件，组件都不能通过测试，我们需要配置mocha 忽略less 文件
-
-Install it:
-
-```js
-npm install --save-dev ignore-styles
-```
-
-Run tests without styles:
-
-```js
-mocha --require ignore-styles
-```
-
--	简化import路径 mocha测试不能识别 - ---
-
-> 使用 babel-plugin-module-resolver 解决
